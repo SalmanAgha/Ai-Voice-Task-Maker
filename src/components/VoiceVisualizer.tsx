@@ -11,7 +11,7 @@ export default function VoiceVisualizer({ isActive, color = '#2563eb' }: VoiceVi
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (!isActive) {
