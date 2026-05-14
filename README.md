@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vortex AI | Institutional Voice Task Manager
 
-## Getting Started
+Vortex AI is a high-performance, voice-first task management ecosystem designed for the UrbanGround software engineering assessment. Unlike traditional "chatbot" interfaces, Vortex AI functions as a proactive voice agent that manages complex task lifecycles through natural, real-time conversation.
 
-First, run the development server:
+![Vortex AI Dashboard](https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=2000)
 
+## 🎙️ The "Voice-First" Philosophy
+The core objective of this project was to eliminate manual CRUD interactions. Vortex AI relies on **Semantic Intent Recognition** to resolve user commands, meaning you don't need to remember exact task names. You speak, it understands, and the interface reacts in real-time.
+
+---
+
+## 🚀 Key Features
+
+- **Professional Voice Engine**: Uses OpenAI's high-fidelity TTS (Alloy) to provide a premium, human-like assistant experience.
+- **Continuous Speech Recognition**: Implements a "Manual Pro-Mode" recording system that captures long, complex instructions without cutting the user off during pauses.
+- **Deep Context Awareness**: Persists conversation history in PostgreSQL, allowing the AI to understand relative references like *"Change the time for the previous one"* or *"Remind me about that meeting I made earlier."*
+- **Real-Time Synchronicity**: A heartbeat sync engine ensures that voice commands and manual UI fallbacks stay perfectly aligned every 3 seconds.
+*   **Dual-View Interface**: A split-screen dashboard featuring a reactive audio waveform visualizer and a persistent conversational transcript window.
+- **Proactive Reminders**: The system monitors your agenda and proactively speaks aloud when a task is due.
+
+---
+
+## 🛠️ Technical Architecture
+
+- **Frontend**: Next.js 15 (App Router) with Tailwind CSS v4.
+- **Backend**: Next.js Serverless Functions + Prisma ORM.
+- **AI Core**: OpenAI GPT-4o-mini (Context & Tool Calling).
+- **Audio Logic**: Web Audio API (Visualization) + OpenAI TTS (Output) + Web Speech API (Input).
+- **Database**: PostgreSQL (Fully persistent Task and Message models).
+
+---
+
+## 📦 Setup & Installation
+
+### 1. Prerequisites
+- Node.js 18+
+- A running PostgreSQL instance (or use Neon/Supabase for cloud).
+- An OpenAI API Key.
+
+### 2. Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/voice-task-manager.git
+cd voice-task-manager
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Environment Configuration
+Create a `.env` file in the root directory:
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/voice_task_manager"
+OPENAI_API_KEY="your_openai_api_key_here"
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Database Setup
+```bash
+npx prisma db push
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5. Run Locally
+```bash
+npm run dev
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🔒 Security Note
+This project is configured with a strict `.gitignore`. **NEVER** commit your `.env` file to a public repository. When deploying to Vercel, ensure you add your keys under the **Environment Variables** settings.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👨‍💻 Author
+**Salman Agha**
+*Software Engineer Candidate*
